@@ -7,7 +7,10 @@ window.chartColors = {
 	blue: '#5b99ea', // rgba(91,153,234, 1)
 	gray: '#a9b5c9',
 	text: '#252930',
-	border: '#e7e9ed'
+	border: '#e7e9ed',
+	red: '#ff0000',
+	violet: '#bf00ff',
+	orange: '#ff8000',
 };
 
 /* Random number generator for demo purpose */
@@ -213,19 +216,24 @@ var pieChartConfig = {
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
 			],
 			backgroundColor: [
-				window.chartColors.green,
+				window.chartColors.red,
 				window.chartColors.blue,
-				window.chartColors.gray,
-
+				window.chartColors.orange,
+				window.chartColors.violet,
+				window.chartColors.green,
 			],
 			label: 'Dataset 1'
 		}],
 		labels: [
-			'Green',
-			'Blue',
-			'Gray',
+			'Tạm hoãn',
+			'Đang thực hiện',
+			'Chờ phê duyệt',
+			'Bị huỷ',
+			'Đã hoàn thành'
 		]
 	},
 	options: {
@@ -270,6 +278,72 @@ var pieChartConfig = {
 	}
 };
 
+
+// Pie1
+
+var pieChartConfig1 = {
+	type: 'pie',
+	data: {
+		datasets: [{
+			data: [
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
+			],
+			backgroundColor: [
+				window.chartColors.green,
+				window.chartColors.orange,
+				window.chartColors.red,
+			],
+			label: 'Dataset 1'
+		}],
+		labels: [
+			'Đúng tiến độ',
+			'Trễ tiến độ',
+			'Quá hạn',
+		]
+	},
+	options: {
+		responsive: true,
+		legend: {
+			display: true,
+			position: 'bottom',
+			align: 'center',
+		},
+
+		tooltips: {
+			titleMarginBottom: 10,
+			bodySpacing: 10,
+			xPadding: 16,
+			yPadding: 16,
+			borderColor: window.chartColors.border,
+			borderWidth: 1,
+			backgroundColor: '#fff',
+			bodyFontColor: window.chartColors.text,
+			titleFontColor: window.chartColors.text,
+			
+			/* Display % in tooltip - https://stackoverflow.com/questions/37257034/chart-js-2-0-doughnut-tooltip-percentages */
+			callbacks: {
+                label: function(tooltipItem, data) {
+					//get the concerned dataset
+					var dataset = data.datasets[tooltipItem.datasetIndex];
+					//calculate the total of this data set
+					var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+					return previousValue + currentValue;
+					});
+					//get the current items value
+					var currentValue = dataset.data[tooltipItem.index];
+					//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+					var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+					
+					return percentage + "%";
+			    },
+            },
+			
+
+		},
+	}
+};
 
 // Doughnut Chart Demo
 
@@ -349,17 +423,20 @@ var doughnutChartConfig = {
 // Generate charts on load
 window.addEventListener('load', function(){
 	
-	var lineChart = document.getElementById('chart-line').getContext('2d');
-	window.myLine = new Chart(lineChart, lineChartConfig);
+	// var lineChart = document.getElementById('chart-line').getContext('2d');
+	// window.myLine = new Chart(lineChart, lineChartConfig);
 	
-	var barChart = document.getElementById('chart-bar').getContext('2d');
-	window.myBar = new Chart(barChart, barChartConfig);
+	// var barChart = document.getElementById('chart-bar').getContext('2d');
+	// window.myBar = new Chart(barChart, barChartConfig);
 	
 	var pieChart = document.getElementById('chart-pie').getContext('2d');
 	window.myPie = new Chart(pieChart, pieChartConfig);
+
+	var pieChart = document.getElementById('chart-pie1').getContext('2d');
+	window.myPie = new Chart(pieChart, pieChartConfig1);
 	
-	var doughnutChart = document.getElementById('chart-doughnut').getContext('2d');
-	window.myDoughnut = new Chart(doughnutChart, doughnutChartConfig);
+	// var doughnutChart = document.getElementById('chart-doughnut').getContext('2d');
+	// window.myDoughnut = new Chart(doughnutChart, doughnutChartConfig);
 	
 
 });	

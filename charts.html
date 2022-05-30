@@ -2,6 +2,14 @@
 <html lang="en"> 
 <head>
     <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+	<!-- <script>
+		// Asynchronously load the client library
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/client:plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script> -->
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -20,7 +28,21 @@
 
 </head> 
 
-<body class="app">   	
+<body class="app">   
+	<!-- <script async defer src="https://apis.google.com/js/api.js"
+  onload="this.onload=function(){};handleClientLoad()"
+  onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script> -->
+	<script>
+		// Asynchronously load the client library
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/client:plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+	</script>
+	<script src="https://apis.google.com/js/client.js?onload=gapiInit"></script>
+
     <header class="app-header fixed-top">	   	            
         <div class="app-header-inner">  
 	        <div class="container-fluid py-2">
@@ -423,7 +445,228 @@
     <script src="assets/plugins/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
     
+	<!-- Data chart -->
 
+	<script>
+		window.chartColors = {
+			green: '#75c181', // rgba(117,193,129, 1)
+			blue: '#5b99ea', // rgba(91,153,234, 1)
+			gray: '#a9b5c9',
+			text: '#252930',
+			border: '#e7e9ed'
+		};
+
+		var randomDataPoint = function(){ return Math.round(Math.random()*100)};
+
+		// TODO(developer): Set to client ID and API key from the Developer Console
+		const CLIENT_ID = '105759996392811953698';
+		const API_KEY = 'AIzaSyCYlkAiRKhd8lFeqUEshcRns-UktvSqdww';
+
+	// 	// Discovery doc URL for APIs used by the quickstart
+	const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
+
+	// 	// Authorization scopes required by the API; multiple scopes can be
+	// 	// included, separated by spaces.
+	const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+
+		let tokenClient;
+      let gapiInited = false;
+      let gisInited = false;
+
+    //   document.getElementById('authorize_button').style.visibility = 'hidden';
+    //   document.getElementById('signout_button').style.visibility = 'hidden';
+
+    //   /**
+    //    * Callback after api.js is loaded.
+    //    */
+      function gapiLoaded() {
+        gapi.load('client', intializeGapiClient);
+      }
+
+    //   /**
+    //    * Callback after the API client is loaded. Loads the
+    //    * discovery doc to initialize the API.
+    //    */
+	async function intializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC],
+        });
+        gapiInited = true;
+        // maybeEnableButtons();
+      }
+
+    //   /**
+    //    * Callback after Google Identity Services are loaded.
+    //    */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '', // defined later
+        });
+        gisInited = true;
+        // maybeEnableButtons();
+      }
+	//   tokenClient.callback = async (resp) => {
+    //       if (resp.error !== undefined) {
+    //         throw (resp);
+    //       }
+	// 	}
+    //   /**
+    //    * Enables user interaction after all libraries are loaded.
+    //    */
+    //   function maybeEnableButtons() {
+    //     if (gapiInited && gisInited) {
+    //       document.getElementById('authorize_button').style.visibility = 'visible';
+    //     }
+    //   }
+
+    //   /**
+    //    *  Sign in the user upon button click.
+    //    */
+    //   function handleAuthClick() {
+    //     tokenClient.callback = async (resp) => {
+    //       if (resp.error !== undefined) {
+    //         throw (resp);
+    //       }
+    //       document.getElementById('signout_button').style.visibility = 'visible';
+    //       document.getElementById('authorize_button').innerText = 'Refresh';
+    //       await listMajors();
+    //     };
+
+    //     if (gapi.client.getToken() === null) {
+    //       // Prompt the user to select a Google Account and ask for consent to share their data
+    //       // when establishing a new session.
+    //       tokenClient.requestAccessToken({prompt: 'consent'});
+    //     } else {
+    //       // Skip display of account chooser and consent dialog for an existing session.
+    //       tokenClient.requestAccessToken({prompt: ''});
+    //     }
+    //   }
+
+    //   /**
+    //    *  Sign out the user upon button click.
+    //    */
+    //   function handleSignoutClick() {
+    //     const token = gapi.client.getToken();
+    //     if (token !== null) {
+    //       google.accounts.oauth2.revoke(token.access_token);
+    //       gapi.client.setToken('');
+    //       document.getElementById('content').innerText = '';
+    //       document.getElementById('authorize_button').innerText = 'Authorize';
+    //       document.getElementById('signout_button').style.visibility = 'hidden';
+    //     }
+    //   }
+
+	//   async function listMajors() {
+    //     let response;
+    //     try {
+    //       // Fetch first 10 files
+    //       response = await gapi.client.sheets.spreadsheets.values.get({
+    //         spreadsheetId: '1_DkD4vjyHJJf89yMS2avc0DWcMON0z4rtjy0n3MGNgE',
+    //         range: 'Tasks!A:E',
+    //       });
+    //     } catch (err) {
+    //       document.getElementById('content').innerText = err.message;
+    //       return;
+    //     }
+    //     const range = response.result;
+    //     if (!range || !range.values || range.values.length == 0) {
+    //       document.getElementById('content').innerText = 'No values found.';
+    //       return;
+    //     }
+    //     // Flatten to string to display
+    //     const output = range.values.reduce(
+    //         (str, row) => `${str}${row[0]}, ${row[4]}\n`,
+    //         'Name, Major:\n');
+    //     document.getElementById('content').innerText = output;
+    //   }
+			
+	console.log(gapi);
+		gapi.client.sheets.spreadsheets.values.get({
+			spreadsheetId: '1_DkD4vjyHJJf89yMS2avc0DWcMON0z4rtjy0n3MGNgE',
+			range: 'Tasks|A1:A4'
+			}).then((response) => {
+			var result = response.result;
+			var numRows = result.values ? result.values.length : 0;
+			console.log(`${numRows} rows retrieved.`);
+			});
+		// Pie Chart Demo
+
+		var pieChartConfig = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						randomDataPoint(),
+						randomDataPoint(),
+						randomDataPoint(),
+					],
+					backgroundColor: [
+						window.chartColors.green,
+						window.chartColors.blue,
+						window.chartColors.gray,
+
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Green',
+					'Blue',
+					'Gray',
+				]
+			},
+			options: {
+				responsive: true,
+				legend: {
+					display: true,
+					position: 'bottom',
+					align: 'center',
+				},
+
+				tooltips: {
+					titleMarginBottom: 10,
+					bodySpacing: 10,
+					xPadding: 16,
+					yPadding: 16,
+					borderColor: window.chartColors.border,
+					borderWidth: 1,
+					backgroundColor: '#fff',
+					bodyFontColor: window.chartColors.text,
+					titleFontColor: window.chartColors.text,
+					
+					/* Display % in tooltip - https://stackoverflow.com/questions/37257034/chart-js-2-0-doughnut-tooltip-percentages */
+					callbacks: {
+						label: function(tooltipItem, data) {
+							//get the concerned dataset
+							var dataset = data.datasets[tooltipItem.datasetIndex];
+							//calculate the total of this data set
+							var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+							return previousValue + currentValue;
+							});
+							//get the current items value
+							var currentValue = dataset.data[tooltipItem.index];
+							//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+							var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+							
+							return percentage + "%";
+						},
+					},
+					
+
+				},
+			}
+		};
+
+		window.addEventListener('load', function(){
+		
+		var pieChart = document.getElementById('chart-pie').getContext('2d');
+		window.myPie = new Chart(pieChart, pieChartConfig);
+		
+	});	
+
+	</script>
     
     <!-- Charts JS -->
     <script src="assets/plugins/chart.js/chart.min.js"></script> 
