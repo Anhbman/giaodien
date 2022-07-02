@@ -1,0 +1,15 @@
+<head>
+    <!-- Add Sheetsu Web Client script to the head -->
+    <script src='//script.sheetsu.com/'></script>
+</head>
+
+<body>
+    <script>
+        // Print out data to the console
+        function successFunc(data) {
+            console.log(data);
+        }
+        var options = {}
+        Sheetsu.read('https://sheetsu.com/apis/v1.0su/379bbdbe9848', options, successFunc);
+    </script>
+</body>

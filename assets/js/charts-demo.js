@@ -213,11 +213,11 @@ var pieChartConfig = {
 	data: {
 		datasets: [{
 			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
+				7,
+				5,
+				4,
+				2,
+				3,
 			],
 			backgroundColor: [
 				window.chartColors.red,
@@ -286,9 +286,9 @@ var pieChartConfig1 = {
 	data: {
 		datasets: [{
 			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
+				7,
+				2,
+				3,
 			],
 			backgroundColor: [
 				window.chartColors.green,
@@ -353,9 +353,9 @@ var doughnutChartConfig = {
 	data: {
 		datasets: [{
 			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
+				3,
+				4,
+				1,
 			],
 			backgroundColor: [
 				window.chartColors.green,
@@ -418,6 +418,7 @@ var doughnutChartConfig = {
 	}
 };
 
+// Connect gg
 
 
 // Generate charts on load
