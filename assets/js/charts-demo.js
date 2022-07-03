@@ -204,146 +204,190 @@ var barChartConfig = {
 	}
 }
 
+let numberDate = (array, jobStatus) => {
+	let nb = array.reduce((total, currentValue) => {
+		if (currentValue.status == jobStatus) {
+			return total + 1;
+		}
+		return total;
+	}, 0);
 
+	return nb;
+}
 
-// Pie Chart Demo
+let getValue = async function getData() {
 
-var pieChartConfig = {
-	type: 'pie',
-	data: {
-		datasets: [{
-			data: [
-				7,
-				5,
-				4,
-				2,
-				3,
-			],
-			backgroundColor: [
-				window.chartColors.red,
-				window.chartColors.blue,
-				window.chartColors.orange,
-				window.chartColors.violet,
-				window.chartColors.green,
-			],
-			label: 'Dataset 1'
-		}],
-		labels: [
-			'Tạm hoãn',
-			'Đang thực hiện',
-			'Chờ phê duyệt',
-			'Bị huỷ',
-			'Đã hoàn thành'
-		]
-	},
-	options: {
-		responsive: true,
-		legend: {
-			display: true,
-			position: 'bottom',
-			align: 'center',
-		},
+	const datas = await fetch('https://sheetsu.com/apis/v1.0qw/9850d8ec0e05')
+		.then(response => response.json())
+		.then(data => data);
 
-		tooltips: {
-			titleMarginBottom: 10,
-			bodySpacing: 10,
-			xPadding: 16,
-			yPadding: 16,
-			borderColor: window.chartColors.border,
-			borderWidth: 1,
-			backgroundColor: '#fff',
-			bodyFontColor: window.chartColors.text,
-			titleFontColor: window.chartColors.text,
-			
-			/* Display % in tooltip - https://stackoverflow.com/questions/37257034/chart-js-2-0-doughnut-tooltip-percentages */
-			callbacks: {
-                label: function(tooltipItem, data) {
-					//get the concerned dataset
-					var dataset = data.datasets[tooltipItem.datasetIndex];
-					//calculate the total of this data set
-					var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-					return previousValue + currentValue;
-					});
-					//get the current items value
-					var currentValue = dataset.data[tooltipItem.index];
-					//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
-					var percentage = Math.floor(((currentValue/total) * 100)+0.5);
-					
-					return percentage + "%";
-			    },
-            },
-			
+	return datas;
+	// Pie Chart Demo
 
-		},
-	}
 };
 
+getValue()
+	.then(datas => datas)
+	.then(datas => {
 
-// Pie1
+		let overJob = numberDate(datas, 'O');
+		let okJob = numberDate(datas, 'D');
+		let nowJob = numberDate(datas, 'W');
+		let waitJob = numberDate(datas, 'N');
+		let delayedJob = numberDate(datas, 'O');
+		let cancelJob = numberDate(datas, 'N');
 
-var pieChartConfig1 = {
-	type: 'pie',
-	data: {
-		datasets: [{
-			data: [
-				7,
-				2,
-				3,
-			],
-			backgroundColor: [
-				window.chartColors.green,
-				window.chartColors.orange,
-				window.chartColors.red,
-			],
-			label: 'Dataset 1'
-		}],
-		labels: [
-			'Đúng tiến độ',
-			'Trễ tiến độ',
-			'Quá hạn',
-		]
-	},
-	options: {
-		responsive: true,
-		legend: {
-			display: true,
-			position: 'bottom',
-			align: 'center',
-		},
+		console.log("charts awqeqw", datas);
 
-		tooltips: {
-			titleMarginBottom: 10,
-			bodySpacing: 10,
-			xPadding: 16,
-			yPadding: 16,
-			borderColor: window.chartColors.border,
-			borderWidth: 1,
-			backgroundColor: '#fff',
-			bodyFontColor: window.chartColors.text,
-			titleFontColor: window.chartColors.text,
-			
-			/* Display % in tooltip - https://stackoverflow.com/questions/37257034/chart-js-2-0-doughnut-tooltip-percentages */
-			callbacks: {
-                label: function(tooltipItem, data) {
-					//get the concerned dataset
-					var dataset = data.datasets[tooltipItem.datasetIndex];
-					//calculate the total of this data set
-					var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-					return previousValue + currentValue;
-					});
-					//get the current items value
-					var currentValue = dataset.data[tooltipItem.index];
-					//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
-					var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+		console.log(overJob, okJob, nowJob);
+		var pieChartConfig = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						delayedJob,
+						nowJob,
+						waitJob,
+						cancelJob,
+						okJob,
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.blue,
+						window.chartColors.orange,
+						window.chartColors.violet,
+						window.chartColors.green,
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Tạm hoãn',
+					'Đang thực hiện',
+					'Chờ phê duyệt',
+					'Bị huỷ',
+					'Đã hoàn thành'
+				]
+			},
+			options: {
+				responsive: true,
+				legend: {
+					display: true,
+					position: 'bottom',
+					align: 'center',
+				},
+	
+				tooltips: {
+					titleMarginBottom: 10,
+					bodySpacing: 10,
+					xPadding: 16,
+					yPadding: 16,
+					borderColor: window.chartColors.border,
+					borderWidth: 1,
+					backgroundColor: '#fff',
+					bodyFontColor: window.chartColors.text,
+					titleFontColor: window.chartColors.text,
 					
-					return percentage + "%";
-			    },
-            },
+					/* Display % in tooltip - https://stackoverflow.com/questions/37257034/chart-js-2-0-doughnut-tooltip-percentages */
+					callbacks: {
+						label: function(tooltipItem, data) {
+							//get the concerned dataset
+							var dataset = data.datasets[tooltipItem.datasetIndex];
+							//calculate the total of this data set
+							var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+							return previousValue + currentValue;
+							});
+							//get the current items value
+							var currentValue = dataset.data[tooltipItem.index];
+							//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+							var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+							
+							return percentage + "%";
+						},
+					},
+					
+	
+				},
+			}
+		};
+	
+	
+		// Pie1
+	
+		var pieChartConfig1 = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						okJob,
+						overJob,
+					],
+					backgroundColor: [
+						window.chartColors.green,
+						window.chartColors.red,
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					'Đúng tiến độ',
+					'Quá hạn',
+				]
+			},
+			options: {
+				responsive: true,
+				legend: {
+					display: true,
+					position: 'bottom',
+					align: 'center',
+				},
+	
+				tooltips: {
+					titleMarginBottom: 10,
+					bodySpacing: 10,
+					xPadding: 16,
+					yPadding: 16,
+					borderColor: window.chartColors.border,
+					borderWidth: 1,
+					backgroundColor: '#fff',
+					bodyFontColor: window.chartColors.text,
+					titleFontColor: window.chartColors.text,
+					
+					/* Display % in tooltip - https://stackoverflow.com/questions/37257034/chart-js-2-0-doughnut-tooltip-percentages */
+					callbacks: {
+						label: function(tooltipItem, data) {
+							//get the concerned dataset
+							var dataset = data.datasets[tooltipItem.datasetIndex];
+							//calculate the total of this data set
+							var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+							return previousValue + currentValue;
+							});
+							//get the current items value
+							var currentValue = dataset.data[tooltipItem.index];
+							//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+							var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+							
+							return percentage + "%";
+						},
+					},
+					
+	
+				},
+			}
+		};
+		// Generate charts on load
+		// window.addEventListener('load', function(){
 			
-
-		},
-	}
-};
+		// 	var pieChart = document.getElementById('chart-pie').getContext('2d');
+		// 	window.myPie = new Chart(pieChart, pieChartConfig);
+	
+		// 	var pieChart = document.getElementById('chart-pie1').getContext('2d');
+		// 	window.myPie = new Chart(pieChart, pieChartConfig1);
+		// });	
+		var pieChart = document.getElementById('chart-pie').getContext('2d');
+			window.myPie = new Chart(pieChart, pieChartConfig);
+	
+		var pieChart = document.getElementById('chart-pie1').getContext('2d');
+		window.myPie = new Chart(pieChart, pieChartConfig1);
+	})
 
 // Doughnut Chart Demo
 
@@ -416,29 +460,9 @@ var doughnutChartConfig = {
 
 		},
 	}
+	
 };
 
 // Connect gg
 
-
-// Generate charts on load
-window.addEventListener('load', function(){
-	
-	// var lineChart = document.getElementById('chart-line').getContext('2d');
-	// window.myLine = new Chart(lineChart, lineChartConfig);
-	
-	// var barChart = document.getElementById('chart-bar').getContext('2d');
-	// window.myBar = new Chart(barChart, barChartConfig);
-	
-	var pieChart = document.getElementById('chart-pie').getContext('2d');
-	window.myPie = new Chart(pieChart, pieChartConfig);
-
-	var pieChart = document.getElementById('chart-pie1').getContext('2d');
-	window.myPie = new Chart(pieChart, pieChartConfig1);
-	
-	// var doughnutChart = document.getElementById('chart-doughnut').getContext('2d');
-	// window.myDoughnut = new Chart(doughnutChart, doughnutChartConfig);
-	
-
-});	
 	
