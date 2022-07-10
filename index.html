@@ -595,8 +595,6 @@
 
 
 		<!-- Danh sách công việc -->
-
-
 		<nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
 			<a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"
 				href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Tất cả</a>
@@ -1042,42 +1040,42 @@
 				.then(response => response.json())
 				.then(data => data);
 
-				console.log(datas)
+			console.log(datas)
 
-				function numberJob(array, status) {
-					let nb;
-					nb = array.reduce((total, currentValue) => {
-						if (currentValue.status == status) {
-							return total + 1;
-						} else {
-							return total;
-						}
-					}, 0);
+			function numberJob(array, status) {
+				let nb;
+				nb = array.reduce((total, currentValue) => {
+					if (currentValue.status == status) {
+						return total + 1;
+					} else {
+						return total;
+					}
+				}, 0);
 
-					return nb
-				}
+				return nb
+			}
 
-				const table = document.querySelector('.table.app-table-hover.mb-0.text-left tbody');
-				const total_job = document.querySelector('#total_job');
-				const now_job = document.querySelector('#now_job');
-				const done_job = document.querySelector('#done_job');
-				const ok_job = document.querySelector('#ok_job');
+			const table = document.querySelector('.table.app-table-hover.mb-0.text-left tbody');
+			const total_job = document.querySelector('#total_job');
+			const now_job = document.querySelector('#now_job');
+			const done_job = document.querySelector('#done_job');
+			const ok_job = document.querySelector('#ok_job');
 
-				const numberTotalJob = datas.length;
-				const numberNowJob = numberJob(datas, 'W');
-				const numberDoneJob = numberJob(datas, 'D');
-				const numberOkJob = numberJob(datas, 'D');
+			const numberTotalJob = datas.length;
+			const numberNowJob = numberJob(datas, 'W');
+			const numberDoneJob = numberJob(datas, 'D');
+			const numberOkJob = numberJob(datas, 'D');
 
-				total_job.innerHTML = numberTotalJob;
-				now_job.innerHTML = numberNowJob;
-				done_job.innerHTML = numberDoneJob;
-				ok_job.innerHTML = numberDoneJob;
+			total_job.innerHTML = numberTotalJob;
+			now_job.innerHTML = numberNowJob;
+			done_job.innerHTML = numberDoneJob;
+			ok_job.innerHTML = numberDoneJob;
 
-				console.log(numberTotalJob, numberNowJob, numberDoneJob);
+			console.log(numberTotalJob, numberNowJob, numberDoneJob);
 
 
-				const htmls = datas.map(data => {
-					return `
+			const htmls = datas.map(data => {
+				return `
 						<tr>
 							<td class="cell">${data.task_id}</td>
 							<td class="cell"><span class="truncate">${data.description}</span></td>
@@ -1089,7 +1087,7 @@
 							<td class="cell">${data.remind}</td>
 						</tr>
 					`;
-				});
+			});
 			table.innerHTML = htmls.join('');
 
 		};
