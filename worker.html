@@ -9,9 +9,8 @@
         var options = {}
         Sheetsu.read('https://sheetsu.com/apis/v1.0su/379bbdbe9848', options, successFunc);
     </script>  -->
-
   <head>
-    <title>Quản lý công việc</title>
+    <title>Quản lý nhân công</title>
 
     <!-- Meta -->
     <meta charset="utf-8" />
@@ -24,22 +23,14 @@
     />
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- FontAwesome JS-->
     <script defer src="assets/plugins/fontawesome/js/all.min.js"></script>
+
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css" />
   </head>
-  <div>
-    <!-- <iframe
-      src="https://sheetsu.com/a/f/c6fd8f96991f?embedded=true"
-      width="100%"
-      height="600"
-      frameborder="0"
-      style="background: transparent; border: 1px solid #dedede"
-    ></iframe> -->
-  </div>
+
   <body class="app">
     <header class="app-header fixed-top">
       <div class="app-header-inner">
@@ -122,16 +113,15 @@
                         d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
                       />
                     </svg>
-                    <span class="icon-badge">3</span>
-                  </a>
-                  <!--//dropdown-toggle-->
+                    <span class="icon-badge">3</span> </a
+                  ><!--//dropdown-toggle-->
 
                   <div
                     class="dropdown-menu p-0"
                     aria-labelledby="notifications-dropdown-toggle"
                   >
                     <div class="dropdown-menu-header p-3">
-                      <h5 class="dropdown-menu-title mb-0">Thông báo</h5>
+                      <h5 class="dropdown-menu-title mb-0">Notifications</h5>
                     </div>
                     <!--//dropdown-menu-title-->
                     <div class="dropdown-menu-content">
@@ -315,14 +305,12 @@
                     aria-labelledby="user-dropdown-toggle"
                   >
                     <li>
-                      <a class="dropdown-item" href="account.html">Tài khoản</a>
+                      <a class="dropdown-item" href="account.html">Account</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="settings.html">Cài đặt</a>
+                      <a class="dropdown-item" href="settings.html">Settings</a>
                     </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
+                    <li><hr class="dropdown-divider" /></li>
                     <li>
                       <a class="dropdown-item" href="login.html">Log Out</a>
                     </li>
@@ -379,9 +367,8 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Tổng quan</span>
-                </a>
-                <!--//nav-link-->
+                  <span class="nav-link-text">Tổng quan</span> </a
+                ><!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item">
@@ -405,9 +392,8 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Tài liệu</span>
-                </a>
-                <!--//nav-link-->
+                  <span class="nav-link-text">Tài liệu</span> </a
+                ><!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item">
@@ -435,9 +421,8 @@
                       <circle cx="3.5" cy="10.5" r=".5" />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Công việc</span>
-                </a>
-                <!--//nav-link-->
+                  <span class="nav-link-text">Công việc</span> </a
+                ><!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item has-submenu">
@@ -469,7 +454,7 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Thông tin cá nhân</span>
+                  <span class="nav-link-text">Pages</span>
                   <span class="submenu-arrow">
                     <svg
                       width="1em"
@@ -483,11 +468,9 @@
                         fill-rule="evenodd"
                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                       />
-                    </svg>
-                  </span>
-                  <!--//submenu-arrow-->
-                </a>
-                <!--//nav-link-->
+                    </svg> </span
+                  ><!--//submenu-arrow--> </a
+                ><!--//nav-link-->
                 <div
                   id="submenu-1"
                   class="collapse submenu submenu-1"
@@ -496,14 +479,14 @@
                   <ul class="submenu-list list-unstyled">
                     <li class="submenu-item">
                       <a class="submenu-link" href="notifications.html"
-                        >Thông báo</a
+                        >Notifications</a
                       >
                     </li>
                     <li class="submenu-item">
-                      <a class="submenu-link" href="account.html">Tài khoản</a>
+                      <a class="submenu-link" href="account.html">Account</a>
                     </li>
                     <li class="submenu-item">
-                      <a class="submenu-link" href="settings.html">Cài đặt</a>
+                      <a class="submenu-link" href="settings.html">Settings</a>
                     </li>
                   </ul>
                 </div>
@@ -535,7 +518,7 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Phiên đăng nhập</span>
+                  <span class="nav-link-text">External</span>
                   <span class="submenu-arrow">
                     <svg
                       width="1em"
@@ -549,11 +532,9 @@
                         fill-rule="evenodd"
                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                       />
-                    </svg>
-                  </span>
-                  <!--//submenu-arrow-->
-                </a>
-                <!--//nav-link-->
+                    </svg> </span
+                  ><!--//submenu-arrow--> </a
+                ><!--//nav-link-->
                 <div
                   id="submenu-2"
                   class="collapse submenu submenu-2"
@@ -561,15 +542,18 @@
                 >
                   <ul class="submenu-list list-unstyled">
                     <li class="submenu-item">
-                      <a class="submenu-link" href="login.html">Đăng nhập</a>
+                      <a class="submenu-link" href="login.html">Login</a>
                     </li>
                     <li class="submenu-item">
-                      <a class="submenu-link" href="signup.html">Đăng ký</a>
+                      <a class="submenu-link" href="signup.html">Signup</a>
                     </li>
                     <li class="submenu-item">
                       <a class="submenu-link" href="reset-password.html"
-                        >Đổi mật khẩu</a
+                        >Reset password</a
                       >
+                    </li>
+                    <li class="submenu-item">
+                      <a class="submenu-link" href="404.html">404 page</a>
                     </li>
                   </ul>
                 </div>
@@ -594,9 +578,8 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Biểu đồ</span>
-                </a>
-                <!--//nav-link-->
+                  <span class="nav-link-text">Charts</span> </a
+                ><!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item">
@@ -620,9 +603,8 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Trợ giúp</span>
-                </a>
-                <!--//nav-link-->
+                  <span class="nav-link-text">Help</span> </a
+                ><!--//nav-link-->
               </li>
               <!--//nav-item-->
             </ul>
@@ -654,9 +636,8 @@
                         />
                       </svg>
                     </span>
-                    <span class="nav-link-text">Cài đặt</span>
-                  </a>
-                  <!--//nav-link-->
+                    <span class="nav-link-text">Settings</span> </a
+                  ><!--//nav-link-->
                 </li>
                 <!--//nav-item-->
                 <li class="nav-item">
@@ -684,9 +665,8 @@
                         />
                       </svg>
                     </span>
-                    <span class="nav-link-text">Download</span>
-                  </a>
-                  <!--//nav-link-->
+                    <span class="nav-link-text">Download</span> </a
+                  ><!--//nav-link-->
                 </li>
                 <!--//nav-item-->
                 <li class="nav-item">
@@ -714,9 +694,8 @@
                         />
                       </svg>
                     </span>
-                    <span class="nav-link-text">License</span>
-                  </a>
-                  <!--//nav-link-->
+                    <span class="nav-link-text">License</span> </a
+                  ><!--//nav-link-->
                 </li>
                 <!--//nav-item-->
               </ul>
@@ -736,7 +715,7 @@
         <div class="container-xl">
           <div class="row g-3 mb-4 align-items-center justify-content-between">
             <div class="col-auto">
-              <h1 class="app-page-title mb-0">Công việc</h1>
+              <h1 class="app-page-title mb-0">Thông tin nhân công</h1>
             </div>
             <div class="col-auto">
               <div class="page-utilities">
@@ -807,54 +786,7 @@
 				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Đang thực hiện</a>
 				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Chưa bắt đầu</a>
 				</nav> -->
-          <h3>Phân công công việc</h3>
-          <form
-            action="https://sheetdb.io/api/v1/k58l6h062q75m"
-            method="post"
-            id="sheetdb-form"
-          >
-            <div>
-              <label for="task_id">Mã dự án</label>
-              <input type="text" name="data[task_id]" id="task_id" />
-            </div>
 
-            <div>
-              <label for="description">Mô tả Công việc</label>
-              <input type="text" name="data[description]" id="description" />
-            </div>
-
-            <div>
-              <label for="Supervisor">Người quản lý</label>
-              <input type="text" name="data[Supervisor]" id="Supervisor" />
-            </div>
-
-            <div>
-              <label for="assign_to">Giao cho</label>
-              <input type="text" name="data[assign_to]" id="assign_to" />
-            </div>
-
-            <div>
-              <label for="start_date">Ngày bắt đầu</label>
-              <input type="date" name="data[start_date]" id="start_date" />
-            </div>
-
-            <div>
-              <label for="end_date">Ngày kết thúc</label>
-              <input type="date" name="data[end_date]" id="end_date" />
-            </div>
-
-            <div>
-              <label for="status">Trạng thái</label>
-              <input type="text" name="data[status]" id="status" />
-            </div>
-
-            <div>
-              <label for="remind">Remind</label>
-              <input type="text" name="data[remind]" id="remind" />
-            </div>
-
-            <input type="submit" />
-          </form>
           <div class="tab-content" id="orders-table-tab-content">
             <div
               class="tab-pane fade show active"
@@ -868,18 +800,18 @@
                     <table class="table app-table-hover mb-0 text-left">
                       <thead>
                         <tr>
-                          <th class="cell">Dự án</th>
-                          <th class="cell">Hoàn thành</th>
-                          <th class="cell">Ngày</th>
-                          <th class="cell">Vấn đề</th>
-                          <th class="cell"></th>
+                          <th class="cell">ID</th>
+                          <th class="cell">Họ và tên</th>
+                          <th class="cell">Số ĐT</th>
+                          <th class="cell">Địa chỉ</th>
+                          <th class="cell">Khu vực</th>
                         </tr>
                       </thead>
                       <tbody>
                         <script>
                           async function getData() {
                             const datas = await fetch(
-                              "https://sheetsu.com/apis/v1.0su/379bbdbe9848"
+                              "https://sheetsu.com/apis/v1.0su/00dd46ea8a20"
                             )
                               .then((response) => response.json())
                               .then((data) => data);
@@ -890,10 +822,11 @@
                             const htmls = datas.map((data) => {
                               return `
 															<tr>
-																<td class="cell">${data.task_id}</td>
-																<td class="cell"><span class="truncate">${data.progress}</span></td>
-																<td class="cell">${data.date}</td>
-																<td class="cell">${data.issues}</td>
+																<td class="cell">${data.worker_id}</td>
+																<td class="cell"><span class="truncate">${data.name}</span></td>
+																<td class="cell">${data.phone_number}</td>
+																<td class="cell">${data.address}</td>
+                                                                <td class="cell">${data.division}</td>
 															</tr>
 														`;
                             });
@@ -1177,18 +1110,5 @@
 
     <!-- Page Specific JS -->
     <script src="assets/js/app.js"></script>
-    <script>
-      var form = document.getElementById("sheetdb-form");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        fetch(form.action, {
-          method: "POST",
-          body: new FormData(document.getElementById("sheetdb-form")),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
-      });
-    </script>
   </body>
 </html>
