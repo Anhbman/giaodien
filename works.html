@@ -9,6 +9,7 @@
         var options = {}
         Sheetsu.read('https://sheetsu.com/apis/v1.0su/379bbdbe9848', options, successFunc);
     </script>  -->
+
   <head>
     <title>Quản lý công việc</title>
 
@@ -23,14 +24,22 @@
     />
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media" />
     <link rel="shortcut icon" href="favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- FontAwesome JS-->
     <script defer src="assets/plugins/fontawesome/js/all.min.js"></script>
-
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css" />
   </head>
-
+  <div>
+    <!-- <iframe
+      src="https://sheetsu.com/a/f/c6fd8f96991f?embedded=true"
+      width="100%"
+      height="600"
+      frameborder="0"
+      style="background: transparent; border: 1px solid #dedede"
+    ></iframe> -->
+  </div>
   <body class="app">
     <header class="app-header fixed-top">
       <div class="app-header-inner">
@@ -113,15 +122,16 @@
                         d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
                       />
                     </svg>
-                    <span class="icon-badge">3</span> </a
-                  ><!--//dropdown-toggle-->
+                    <span class="icon-badge">3</span>
+                  </a>
+                  <!--//dropdown-toggle-->
 
                   <div
                     class="dropdown-menu p-0"
                     aria-labelledby="notifications-dropdown-toggle"
                   >
                     <div class="dropdown-menu-header p-3">
-                      <h5 class="dropdown-menu-title mb-0">Notifications</h5>
+                      <h5 class="dropdown-menu-title mb-0">Thông báo</h5>
                     </div>
                     <!--//dropdown-menu-title-->
                     <div class="dropdown-menu-content">
@@ -305,12 +315,14 @@
                     aria-labelledby="user-dropdown-toggle"
                   >
                     <li>
-                      <a class="dropdown-item" href="account.html">Account</a>
+                      <a class="dropdown-item" href="account.html">Tài khoản</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="settings.html">Settings</a>
+                      <a class="dropdown-item" href="settings.html">Cài đặt</a>
                     </li>
-                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
                     <li>
                       <a class="dropdown-item" href="login.html">Log Out</a>
                     </li>
@@ -367,8 +379,9 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Tổng quan</span> </a
-                ><!--//nav-link-->
+                  <span class="nav-link-text">Tổng quan</span>
+                </a>
+                <!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item">
@@ -392,8 +405,9 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Tài liệu</span> </a
-                ><!--//nav-link-->
+                  <span class="nav-link-text">Tài liệu</span>
+                </a>
+                <!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item">
@@ -421,33 +435,9 @@
                       <circle cx="3.5" cy="10.5" r=".5" />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Công việc</span> </a
-                ><!--//nav-link-->
-              </li>
-              <!--//nav-item-->
-              <li class="nav-item">
-                <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                <a class="nav-link" href="worker.html">
-                  <span class="nav-icon">
-                    <svg
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 16 16"
-                      class="bi bi-folder"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"
-                      />
-                    </svg>
-                  </span>
-                  <span class="nav-link-text">Công nhân</span> </a
-                ><!--//nav-link-->
+                  <span class="nav-link-text">Công việc</span>
+                </a>
+                <!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item has-submenu">
@@ -479,7 +469,7 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Pages</span>
+                  <span class="nav-link-text">Thông tin cá nhân</span>
                   <span class="submenu-arrow">
                     <svg
                       width="1em"
@@ -493,9 +483,11 @@
                         fill-rule="evenodd"
                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                       />
-                    </svg> </span
-                  ><!--//submenu-arrow--> </a
-                ><!--//nav-link-->
+                    </svg>
+                  </span>
+                  <!--//submenu-arrow-->
+                </a>
+                <!--//nav-link-->
                 <div
                   id="submenu-1"
                   class="collapse submenu submenu-1"
@@ -504,14 +496,14 @@
                   <ul class="submenu-list list-unstyled">
                     <li class="submenu-item">
                       <a class="submenu-link" href="notifications.html"
-                        >Notifications</a
+                        >Thông báo</a
                       >
                     </li>
                     <li class="submenu-item">
-                      <a class="submenu-link" href="account.html">Account</a>
+                      <a class="submenu-link" href="account.html">Tài khoản</a>
                     </li>
                     <li class="submenu-item">
-                      <a class="submenu-link" href="settings.html">Settings</a>
+                      <a class="submenu-link" href="settings.html">Cài đặt</a>
                     </li>
                   </ul>
                 </div>
@@ -543,7 +535,7 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">External</span>
+                  <span class="nav-link-text">Phiên đăng nhập</span>
                   <span class="submenu-arrow">
                     <svg
                       width="1em"
@@ -557,9 +549,11 @@
                         fill-rule="evenodd"
                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                       />
-                    </svg> </span
-                  ><!--//submenu-arrow--> </a
-                ><!--//nav-link-->
+                    </svg>
+                  </span>
+                  <!--//submenu-arrow-->
+                </a>
+                <!--//nav-link-->
                 <div
                   id="submenu-2"
                   class="collapse submenu submenu-2"
@@ -567,18 +561,15 @@
                 >
                   <ul class="submenu-list list-unstyled">
                     <li class="submenu-item">
-                      <a class="submenu-link" href="login.html">Login</a>
+                      <a class="submenu-link" href="login.html">Đăng nhập</a>
                     </li>
                     <li class="submenu-item">
-                      <a class="submenu-link" href="signup.html">Signup</a>
+                      <a class="submenu-link" href="signup.html">Đăng ký</a>
                     </li>
                     <li class="submenu-item">
                       <a class="submenu-link" href="reset-password.html"
-                        >Reset password</a
+                        >Đổi mật khẩu</a
                       >
-                    </li>
-                    <li class="submenu-item">
-                      <a class="submenu-link" href="404.html">404 page</a>
                     </li>
                   </ul>
                 </div>
@@ -603,8 +594,9 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Charts</span> </a
-                ><!--//nav-link-->
+                  <span class="nav-link-text">Biểu đồ</span>
+                </a>
+                <!--//nav-link-->
               </li>
               <!--//nav-item-->
               <li class="nav-item">
@@ -628,8 +620,9 @@
                       />
                     </svg>
                   </span>
-                  <span class="nav-link-text">Help</span> </a
-                ><!--//nav-link-->
+                  <span class="nav-link-text">Trợ giúp</span>
+                </a>
+                <!--//nav-link-->
               </li>
               <!--//nav-item-->
             </ul>
@@ -661,8 +654,9 @@
                         />
                       </svg>
                     </span>
-                    <span class="nav-link-text">Settings</span> </a
-                  ><!--//nav-link-->
+                    <span class="nav-link-text">Cài đặt</span>
+                  </a>
+                  <!--//nav-link-->
                 </li>
                 <!--//nav-item-->
                 <li class="nav-item">
@@ -690,8 +684,9 @@
                         />
                       </svg>
                     </span>
-                    <span class="nav-link-text">Download</span> </a
-                  ><!--//nav-link-->
+                    <span class="nav-link-text">Download</span>
+                  </a>
+                  <!--//nav-link-->
                 </li>
                 <!--//nav-item-->
                 <li class="nav-item">
@@ -719,8 +714,9 @@
                         />
                       </svg>
                     </span>
-                    <span class="nav-link-text">License</span> </a
-                  ><!--//nav-link-->
+                    <span class="nav-link-text">License</span>
+                  </a>
+                  <!--//nav-link-->
                 </li>
                 <!--//nav-item-->
               </ul>
@@ -811,7 +807,54 @@
 				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Đang thực hiện</a>
 				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Chưa bắt đầu</a>
 				</nav> -->
+          <h3>Phân công công việc</h3>
+          <form
+            action="https://sheetdb.io/api/v1/k58l6h062q75m"
+            method="post"
+            id="sheetdb-form"
+          >
+            <div>
+              <label for="task_id">Mã dự án</label>
+              <input type="text" name="data[task_id]" id="task_id" />
+            </div>
 
+            <div>
+              <label for="description">Mô tả Công việc</label>
+              <input type="text" name="data[description]" id="description" />
+            </div>
+
+            <div>
+              <label for="Supervisor">Người quản lý</label>
+              <input type="text" name="data[Supervisor]" id="Supervisor" />
+            </div>
+
+            <div>
+              <label for="assign_to">Giao cho</label>
+              <input type="text" name="data[assign_to]" id="assign_to" />
+            </div>
+
+            <div>
+              <label for="start_date">Ngày bắt đầu</label>
+              <input type="date" name="data[start_date]" id="start_date" />
+            </div>
+
+            <div>
+              <label for="end_date">Ngày kết thúc</label>
+              <input type="date" name="data[end_date]" id="end_date" />
+            </div>
+
+            <div>
+              <label for="status">Trạng thái</label>
+              <input type="text" name="data[status]" id="status" />
+            </div>
+
+            <div>
+              <label for="remind">Remind</label>
+              <input type="text" name="data[remind]" id="remind" />
+            </div>
+
+            <input type="submit" />
+          </form>
           <div class="tab-content" id="orders-table-tab-content">
             <div
               class="tab-pane fade show active"
@@ -1134,5 +1177,18 @@
 
     <!-- Page Specific JS -->
     <script src="assets/js/app.js"></script>
+    <script>
+      var form = document.getElementById("sheetdb-form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(document.getElementById("sheetdb-form")),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
+      });
+    </script>
   </body>
 </html>
