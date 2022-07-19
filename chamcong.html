@@ -29,11 +29,6 @@
 	<link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
 
 </head>
-<div>
-	<iframe src="https://sheetsu.com/a/f/c6fd8f96991f?embedded=true" width="100%" height="600"
-		frameBorder="0" style="background: transparent; border: 1px solid #dedede;"></iframe>
-
-</div>
 <body class="app">
 	<header class="app-header fixed-top">
 		<div class="app-header-inner">
@@ -543,28 +538,29 @@
 									<table class="table app-table-hover mb-0 text-left">
 										<thead>
 											<tr>
-												<th class="cell">Dự án</th>
-												<th class="cell">Hoàn thành</th>
+												<th class="cell">Mã công việc</th>
+												<th class="cell">Giờ bắt đầu</th>
+												<th class="cell">Giờ kết thúc</th>
 												<th class="cell">Ngày</th>
-												<th class="cell">Vấn đề</th>
-												<th class="cell"></th>
+												<th class="cell">Ghi chú</th>
 											</tr>
 										</thead>
 										<tbody>
 											<script>
 												async function getData() {
-													const datas = await fetch('https://sheetsu.com/apis/v1.0su/379bbdbe9848')
+													const datas = await fetch('https://sheetsu.com/apis/v1.0su/fb5484026a68')
 														.then(response => response.json())
 														.then(data => data);
 
-													// const table = document.querySelector('.table.app-table-hover.mb-0.text-left tbody');
+													const table = document.querySelector('.table.app-table-hover.mb-0.text-left tbody');
 													const htmls = datas.map(data => {
 														return `
 															<tr>
-																<td class="cell">${data.task_id}</td>
-																<td class="cell"><span class="truncate">${data.progress}</span></td>
-																<td class="cell">${data.date}</td>
-																<td class="cell">${data.issues}</td>
+																<td class="cell">${data.Worker_ID}</td>
+                                                                <td class="cell">${data.Start}</td>
+                                                                <td class="cell">${data.End}</td>
+                                                                <td class="cell">${data.Date}</td>
+																<td class="cell">${data.Note}</td>
 															</tr>
 														`;
 													})
@@ -615,11 +611,6 @@
 		<!--//app-content-->
 
 		<footer class="app-footer">
-			<!-- <div class="container text-center py-3"> -->
-			<!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-			<!-- <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-		       
-		    </div> -->
 		</footer>
 		<!--//app-footer-->
 
