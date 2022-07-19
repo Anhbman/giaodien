@@ -29,11 +29,7 @@
 	<link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
 
 </head>
-<div>
-	<iframe src="https://sheetsu.com/a/f/c6fd8f96991f?embedded=true" width="100%" height="600"
-		frameBorder="0" style="background: transparent; border: 1px solid #dedede;"></iframe>
 
-</div>
 <body class="app">
 	<header class="app-header fixed-top">
 		<div class="app-header-inner">
@@ -526,12 +522,13 @@
 				<!--//row-->
 
 
-				<!-- <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+				<nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
 				    <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab" href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Tất cả</a>
 				    <a class="flex-sm-fill text-sm-center nav-link"  id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Đã hoàn thành</a>
 				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Đang thực hiện</a>
 				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Chưa bắt đầu</a>
-				</nav> -->
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-outdate" role="tab" aria-controls="orders-outdate" aria-selected="false">Quá hạn</a>
+				</nav>
 
 
 				<div class="tab-content" id="orders-table-tab-content">
@@ -543,28 +540,35 @@
 									<table class="table app-table-hover mb-0 text-left">
 										<thead>
 											<tr>
-												<th class="cell">Dự án</th>
-												<th class="cell">Hoàn thành</th>
-												<th class="cell">Ngày</th>
-												<th class="cell">Vấn đề</th>
-												<th class="cell"></th>
-											</tr>
+                                                <th class="cell">Dự án</th>
+                                                <th class="cell">Công việc</th>
+                                                <th class="cell">Người quản Lý</th>
+                                                <th class="cell">Vị trí</th>
+                                                <th class="cell">Ngày bắt đầu</th>
+                                                <th class="cell">Ngày kết thúc</th>
+                                                <th class="cell">Trạng thái</th>
+                                                <th class="cell">Remind</th>
+                                            </tr>
 										</thead>
 										<tbody>
 											<script>
 												async function getData() {
-													const datas = await fetch('https://sheetsu.com/apis/v1.0su/379bbdbe9848')
+													const datas = await fetch('https://sheetsu.com/apis/v1.0qw/9850d8ec0e05')
 														.then(response => response.json())
 														.then(data => data);
-
-													// const table = document.querySelector('.table.app-table-hover.mb-0.text-left tbody');
+                                                    console.log(datas);
+													const table = document.querySelector('.table.app-table-hover.mb-0.text-left tbody');
 													const htmls = datas.map(data => {
 														return `
 															<tr>
 																<td class="cell">${data.task_id}</td>
-																<td class="cell"><span class="truncate">${data.progress}</span></td>
-																<td class="cell">${data.date}</td>
-																<td class="cell">${data.issues}</td>
+																<td class="cell">${data.description}n></td>
+																<td class="cell">${data.Supervisor}</td>
+																<td class="cell">${data.assign_to}</td>
+                                                                <td class="cell">${data.start_date}</td>
+                                                                <td class="cell">${data.end_date}</td>
+                                                                <td class="cell">${data.status}</td>
+                                                                <td class="cell">${data.remind}</td>
 															</tr>
 														`;
 													})
@@ -599,6 +603,249 @@
 
 					</div>
 					<!--//tab-pane-->
+
+                    <div class="tab-pane fade" id="orders-pending" role="tabpanel" aria-labelledby="orders-pending-tab">
+					    <div class="app-card app-card-orders-table mb-5">
+						    <div class="app-card-body">
+							    <div class="table-responsive">
+							        <table class="table mb-0 text-left">
+										<thead>
+											<tr>
+                                                <th class="cell">Dự án</th>
+                                                <th class="cell">Công việc</th>
+                                                <th class="cell">Người quản Lý</th>
+                                                <th class="cell">Vị trí</th>
+                                                <th class="cell">Ngày bắt đầu</th>
+                                                <th class="cell">Ngày kết thúc</th>
+                                                <th class="cell">Trạng thái</th>
+                                                <th class="cell">Remind</th>
+                                            </tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="cell">A001</td>
+												<td class="cell">xây tường khu A - Góc Đông Bắc</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">A, A1, A2, A3</td>
+												<td class="cell">29/05/2022</td>
+												<td class="cell">03/06/2022</td>
+												<td class="cell">W</td>
+												<td class="cell">Task xong sớm có thưởng nóng</td>
+											</tr>
+											
+											<tr>
+												<td class="cell">B002</td>
+												<td class="cell">xây tường khu B - Bắc</td>
+												<td class="cell">Admin2</td>
+												<td class="cell">B4, B5</td>
+												<td class="cell">29/05/2022</td>
+												<td class="cell">02/06/2022</td>
+												<td class="cell">W</td>
+												<td class="cell"></td>
+											</tr>
+
+                                            <tr>
+												<td class="cell">D001</td>
+												<td class="cell">sơn tường nhà nghỉ khu D</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">C1, C2, C3</td>
+												<td class="cell">29/05/2022</td>
+												<td class="cell">1/6/2022</td>
+												<td class="cell">W</td>
+												<td class="cell">Pha sơn theo tỷ lệ chủ nhà đã đưa</td>
+											</tr>
+
+                                            <tr>
+												<td class="cell">D002</td>
+												<td class="cell">lợp tôn nhà nghỉ khu D</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">D1, D2, D3</td>
+												<td class="cell">29/05/2022</td>
+												<td class="cell">03/06/2022</td>
+												<td class="cell">W</td>
+												<td class="cell">Không</td>
+											</tr>
+
+                                            <tr>
+												<td class="cell">D003</td>
+												<td class="cell">lát sàn nhà nghỉ khu D</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">E1, E2, E3</td>
+												<td class="cell">29/05/2022</td>
+												<td class="cell">03/06/2022</td>
+												<td class="cell">W</td>
+												<td class="cell">Sau khi lát xong phải lau sàn sạch sẽ</td>
+											</tr>
+											
+										</tbody>
+									</table>
+						        </div><!--//table-responsive-->
+						    </div><!--//app-card-body-->		
+						</div><!--//app-card-->
+			        </div>
+
+                    <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
+					    <div class="app-card app-card-orders-table mb-5">
+						    <div class="app-card-body">
+							    <div class="table-responsive">
+							        <table class="table mb-0 text-left">
+										<thead>
+											<tr>
+                                                <th class="cell">Dự án</th>
+                                                <th class="cell">Công việc</th>
+                                                <th class="cell">Người quản Lý</th>
+                                                <th class="cell">Vị trí</th>
+                                                <th class="cell">Ngày bắt đầu</th>
+                                                <th class="cell">Ngày kết thúc</th>
+                                                <th class="cell">Trạng thái</th>
+                                                <th class="cell">Remind</th>
+                                            </tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="cell">A000</td>
+												<td class="cell">Làm móng</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">A, A1, A2, A3</td>
+												<td class="cell">15/05/2022</td>
+												<td class="cell">27/05/2022</td>
+												<td class="cell">D</td>
+												<td class="cell"></td>
+											</tr>
+											
+											<tr>
+												<td class="cell">E001</td>
+												<td class="cell">đào đường ống nước dẫn tới khu F</td>
+												<td class="cell">Admin5</td>
+												<td class="cell">F1, F2, F3, F4, F5</td>
+												<td class="cell">26/05/2022</td>
+												<td class="cell">29/5/2022</td>
+												<td class="cell">D</td>
+												<td class="cell"></td>
+											</tr>
+											
+										</tbody>
+									</table>
+						        </div><!--//table-responsive-->
+						    </div><!--//app-card-body-->		
+						</div><!--//app-card-->
+			        </div>
+
+                    <div class="tab-pane fade" id="orders-cancelled" role="tabpanel" aria-labelledby="orders-cancelled-tab">
+					    <div class="app-card app-card-orders-table mb-5">
+						    <div class="app-card-body">
+							    <div class="table-responsive">
+							        <table class="table mb-0 text-left">
+										<thead>
+											<tr>
+                                                <th class="cell">Dự án</th>
+                                                <th class="cell">Công việc</th>
+                                                <th class="cell">Người quản Lý</th>
+                                                <th class="cell">Vị trí</th>
+                                                <th class="cell">Ngày bắt đầu</th>
+                                                <th class="cell">Ngày kết thúc</th>
+                                                <th class="cell">Trạng thái</th>
+                                                <th class="cell">Remind</th>
+                                            </tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="cell">A002</td>
+												<td class="cell">xây tường khu A - Tây</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">A1, A2, A3</td>
+												<td class="cell">05/06/2022</td>
+												<td class="cell">19/06/2022</td>
+												<td class="cell">N</td>
+												<td class="cell"></td>
+											</tr>
+											
+											<tr>
+												<td class="cell">C001</td>
+												<td class="cell">lát gạch sân chơi khu C</td>
+												<td class="cell">Admin3</td>
+												<td class="cell">C1, C2, C3</td>
+												<td class="cell">1/6/2022</td>
+												<td class="cell">3/6/2022</td>
+												<td class="cell">N</td>
+												<td class="cell">Cắt gạch sao cho vừa với hình dạng sân chơi</td>
+											</tr>
+
+                                            <tr>
+												<td class="cell">C002</td>
+												<td class="cell">xây bồn cây sân chơi khu C</td>
+												<td class="cell">Admin3</td>
+												<td class="cell">C1, C2, C4, C5</td>
+												<td class="cell">4/6/2022</td>
+												<td class="cell">7/6/2022</td>
+												<td class="cell">N</td>
+												<td class="cell">Không</td>
+											</tr>
+
+                                            <tr>
+												<td class="cell">C003</td>
+												<td class="cell">cố định đồ chơi sân chơi khu C</td>
+												<td class="cell">Admin4</td>
+												<td class="cell">C3, B1, B2</td>
+												<td class="cell">4/6/2022</td>
+												<td class="cell">5/6/2022</td>
+												<td class="cell">N</td>
+												<td class="cell">Không</td>
+											</tr>
+
+                                            <tr>
+												<td class="cell">D004</td>
+												<td class="cell">lát tường nhà nghỉ khu D</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">E1, E2, E3</td>
+												<td class="cell">4/6/2022</td>
+												<td class="cell">7/6/2022</td>
+												<td class="cell">N</td>
+												<td class="cell">Thực hiện từng tầng ngay sau khi lát sàn xong</td>
+											</tr>
+											
+										</tbody>
+									</table>
+						        </div><!--//table-responsive-->
+						    </div><!--//app-card-body-->		
+						</div><!--//app-card-->
+			        </div>
+
+                    <div class="tab-pane fade" id="orders-outdate" role="tabpanel" aria-labelledby="orders-outdate-tab">
+					    <div class="app-card app-card-orders-table mb-5">
+						    <div class="app-card-body">
+							    <div class="table-responsive">
+							        <table class="table mb-0 text-left">
+										<thead>
+											<tr>
+                                                <th class="cell">Dự án</th>
+                                                <th class="cell">Công việc</th>
+                                                <th class="cell">Người quản Lý</th>
+                                                <th class="cell">Vị trí</th>
+                                                <th class="cell">Ngày bắt đầu</th>
+                                                <th class="cell">Ngày kết thúc</th>
+                                                <th class="cell">Trạng thái</th>
+                                                <th class="cell">Remind</th>
+                                            </tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="cell">A003</td>
+												<td class="cell">xây tường khu A - Nam</td>
+												<td class="cell">Admin1</td>
+												<td class="cell">A</td>
+												<td class="cell">05/06/2022</td>
+												<td class="cell">19/06/2000</td>
+												<td class="cell">O</td>
+												<td class="cell"></td>
+											</tr>
+											
+										</tbody>
+									</table>
+						        </div><!--//table-responsive-->
+						    </div><!--//app-card-body-->		
+						</div><!--//app-card-->
+			        </div>
 
 					
 
